@@ -7,7 +7,7 @@
 
             <!-- Big, clear Add Student button -->
             <a href="{{ route('students.create') }}"
-               class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold px-6 py-2 rounded shadow">
+               class="inline-block bg-blue-600 hover:bg-blue-700 text-black font-bold px-6 py-2 rounded shadow">
                ➕ Add Student
             </a>
         </div>
