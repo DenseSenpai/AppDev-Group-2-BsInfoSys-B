@@ -58,7 +58,7 @@
                 <!-- Save Button -->
                 <div class="flex justify-end">
                     <button type="submit"
-                            class="bg-green-600 hover:bg-green-700 text-white font-bold px-6 py-2 rounded shadow">
+                            class="bg-green-600 hover:bg-green-700 text-black font-bold px-6 py-2 rounded shadow">
                         ✅ Save Student
                     </button>
                 </div>
