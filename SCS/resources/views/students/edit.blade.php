@@ -7,7 +7,7 @@
 
             <!-- Back Button -->
             <a href="{{ route('students.index') }}"
-               class="inline-block bg-gray-500 hover:bg-gray-600 text-white font-bold px-6 py-2 rounded shadow">
+               class="inline-block bg-gray-500 hover:bg-gray-600 text-black font-bold px-6 py-2 rounded shadow">
                ← Back to Students
             </a>
         </div>
