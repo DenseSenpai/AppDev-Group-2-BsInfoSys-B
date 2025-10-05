@@ -21,7 +21,7 @@
             {{-- ✅ Admin Dashboard --}}
             @if(auth()->user()->isAdmin())
                 <div class="w-full px-10">
-                    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 place-items-center">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 p-10 place-items-center">
                         
                         <!-- Rooms -->
                         <a href="{{ route('rooms.index') }}" 
