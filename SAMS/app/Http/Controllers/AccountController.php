@@ -9,11 +9,13 @@ use Illuminate\Support\Facades\Hash;
 
 class AccountController extends Controller
 {
+    /** 🟩 Show form to create account (Admin only) */
     public function create()
     {
-        return view('accounts.create'); // form for creating account
+        return view('accounts.create');
     }
 
+    /** 🟩 Store a new account */
     public function store(Request $request)
     {
         $request->validate([
@@ -54,14 +56,26 @@ class AccountController extends Controller
             ->with('success', "Account for {$user->name} created successfully!");
     }
 
+    /** 🟨 Edit account (Admin or owner only) */
     public function edit(User $user)
     {
-        $boarder = $user->boarder; // via relation
+        // ✅ Allow if admin OR editing own account
+        if (auth()->id() !== $user->id && !auth()->user()->isAdmin()) {
+            abort(403, 'Unauthorized access');
+        }
+
+        $boarder = $user->boarder;
         return view('accounts.edit', compact('user', 'boarder'));
     }
 
+    /** 🟨 Update account (Admin or owner only) */
     public function update(Request $request, User $user)
     {
+        // ✅ Allow if admin OR editing own account
+        if (auth()->id() !== $user->id && !auth()->user()->isAdmin()) {
+            abort(403, 'Unauthorized access');
+        }
+
         $request->validate([
             'name'       => 'required|string|max:255',
             'email'      => 'required|email|unique:users,email,' . $user->id,
@@ -72,13 +86,13 @@ class AccountController extends Controller
             'year_level' => 'nullable|string|max:50',
         ]);
 
-        // 1️⃣ Update User
+        // 1️⃣ Update user info
         $user->update([
             'name'  => $request->name,
             'email' => $request->email,
         ]);
 
-        // 2️⃣ If boarder exists, update boarder info
+        // 2️⃣ Update boarder info if exists
         if ($user->boarder) {
             $user->boarder->update([
                 'first_name' => $request->first_name,
@@ -90,7 +104,13 @@ class AccountController extends Controller
             ]);
         }
 
-        return redirect()->route('boarders.index')
-            ->with('success', "Updated account + boarder for {$user->name}");
+        // ✅ Redirect student → dashboard; admin → boarders list
+        if (auth()->user()->isAdmin()) {
+            return redirect()->route('boarders.index')
+                ->with('success', "Updated account + boarder for {$user->name}");
+        } else {
+            return redirect()->route('dashboard')
+                ->with('success', "Your account has been updated successfully.");
+        }
     }
 }
