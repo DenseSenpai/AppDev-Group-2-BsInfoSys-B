@@ -29,7 +29,7 @@
                         <input type="text" name="gcash_number"
                             value="{{ \App\Models\Setting::where('key','gcash_number')->value('value') }}"
                             class="border rounded-lg px-4 py-2 w-64 focus:outline-none focus:ring-2 focus:ring-blue-400">
-                        <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white px-5 py-2 rounded-lg shadow transition">
+                        <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-black px-5 py-2 rounded-lg shadow transition">
                             Save
                         </button>
                     </form>
@@ -166,7 +166,7 @@
                         </table>
                     </div>
                 @else
-                    <p class="text-white text-center text-lg">You are not registered as a boarder.</p>
+                    <p class="text-black text-center text-lg">You are not registered as a boarder.</p>
                 @endif
             @endif
         </div>
