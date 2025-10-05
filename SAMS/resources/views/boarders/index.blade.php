@@ -26,9 +26,9 @@
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
                 @foreach($boarders as $boarder)
                     <div class="bg-white rounded-2xl shadow-lg border border-gray-100 hover:shadow-2xl transition duration-300 overflow-hidden">
-                        <div class="bg-indigo-600 text-white p-4 text-center">
+                        <div class="bg-indigo-600 text-black p-4 text-center">
                             <h3 class="text-xl font-bold">{{ $boarder->first_name }} {{ $boarder->last_name }}</h3>
-                            <p class="text-sm opacity-80">{{ $boarder->course }} • Year {{ $boarder->year_level }}</p>
+                            <p class="text-sm opacity-80">{{ $boarder->course }} • {{ $boarder->year_level }}</p>
                         </div>
 
                         <div class="p-6 space-y-3">
