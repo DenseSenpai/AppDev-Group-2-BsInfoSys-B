@@ -23,41 +23,41 @@
 
                     <!-- Rooms -->
                     <a href="{{ route('rooms.index') }}" 
-                       class="flex flex-col items-center justify-center p-6 bg-white border-t-4 border-indigo-400 rounded-xl shadow hover:shadow-lg transition duration-300 h-40">
+                       class="flex flex-col items-center justify-center p-6 bg-white rounded shadow hover:bg-gray-50 h-40">
                         <div class="text-indigo-500 text-4xl mb-2">🏠</div>
-                        <h2 class="font-bold text-lg text-gray-800">Rooms</h2>
+                        <h2 class="font-bold text-lg">Rooms</h2>
                         <p class="text-sm text-gray-600">View and manage rooms.</p>
                     </a>
 
                     <!-- Boarders -->
                     <a href="{{ route('boarders.index') }}" 
-                       class="flex flex-col items-center justify-center p-6 bg-white border-t-4 border-emerald-400 rounded-xl shadow hover:shadow-lg transition duration-300 h-40">
+                       class="flex flex-col items-center justify-center p-6 bg-white rounded shadow hover:bg-gray-50 h-40">
                         <div class="text-emerald-500 text-4xl mb-2">👥</div>
-                        <h2 class="font-bold text-lg text-gray-800">Boarders</h2>
+                        <h2 class="font-bold text-lg">Boarders</h2>
                         <p class="text-sm text-gray-600">View and manage boarders.</p>
                     </a>
 
                     <!-- Maintenance -->
                     <a href="{{ route('maintenance_reports.index') }}"
-                       class="flex flex-col items-center justify-center p-6 bg-white border-t-4 border-yellow-400 rounded-xl shadow hover:shadow-lg transition duration-300 h-40">
+                       class="flex flex-col items-center justify-center p-6 bg-white rounded shadow hover:bg-gray-50 h-40">
                         <div class="text-yellow-500 text-4xl mb-2">🧰</div>
-                        <h2 class="font-bold text-lg text-gray-800">Maintenance</h2>
+                        <h2 class="font-bold text-lg">Maintenance</h2>
                         <p class="text-sm text-gray-600">View and manage maintenance requests.</p>
                     </a>
 
                     <!-- Payments -->
                     <a href="{{ route('payments.index') }}" 
-                       class="flex flex-col items-center justify-center p-6 bg-white border-t-4 border-pink-400 rounded-xl shadow hover:shadow-lg transition duration-300 h-40">
+                       class="flex flex-col items-center justify-center p-6 bg-white rounded shadow hover:bg-gray-50 h-40">
                         <div class="text-pink-500 text-4xl mb-2">💳</div>
-                        <h2 class="font-bold text-lg text-gray-800">Payments</h2>
+                        <h2 class="font-bold text-lg">Payments</h2>
                         <p class="text-sm text-gray-600">View and manage payments.</p>
                     </a>
 
                     <!-- Create Account -->
                     <a href="{{ route('accounts.create') }}" 
-                       class="flex flex-col items-center justify-center p-6 bg-white border-t-4 border-sky-400 rounded-xl shadow hover:shadow-lg transition duration-300 h-40">
+                       class="flex flex-col items-center justify-center p-6 bg-white rounded shadow hover:bg-gray-50 h-40">
                         <div class="text-sky-500 text-4xl mb-2">➕</div>
-                        <h2 class="font-bold text-lg text-gray-800">Account</h2>
+                        <h2 class="font-bold text-lg">Account</h2>
                         <p class="text-sm text-gray-600">Create account for new boarders.</p>
                     </a>
                 </div>
@@ -69,26 +69,26 @@
 
                     <!-- Rooms -->
                     <a href="{{ route('rooms.index') }}" 
-                       class="flex flex-col items-center justify-center p-6 bg-white border-t-4 border-indigo-400 rounded-xl shadow hover:shadow-lg transition duration-300 h-40">
+                       class="flex flex-col items-center justify-center p-6 bg-white rounded shadow hover:bg-gray-50 h-40">
                         <div class="text-indigo-500 text-4xl mb-2">🛏️</div>
-                        <h2 class="font-bold text-lg text-gray-800">Rooms</h2>
+                        <h2 class="font-bold text-lg">Rooms</h2>
                         <p class="text-sm text-gray-600">Check your board mates.</p>
                     </a>
 
                     <!-- Report Issue -->
                     <a href="{{ route('maintenance_reports.index') }}"
-                       class="flex flex-col items-center justify-center p-6 bg-white border-t-4 border-yellow-400 rounded-xl shadow hover:shadow-lg transition duration-300 h-40">
+                       class="flex flex-col items-center justify-center p-6 bg-white rounded shadow hover:bg-gray-50 h-40">
                         <div class="text-yellow-500 text-4xl mb-2">🛠️</div>
-                        <h2 class="font-bold text-lg text-gray-800">Report Issue</h2>
-                        <p class="text-sm text-gray-600 text-center">Submit a maintenance request if there’s a problem in your room.</p>
+                        <h2 class="font-bold">Report Issue</h2>
+                        <p class="text-sm text-gray-600">Submit a maintenance request if there’s a problem in your room.</p>
                     </a>
 
                     <!-- Payments -->
                     <a href="{{ route('payments.index') }}" 
-                       class="flex flex-col items-center justify-center p-6 bg-white border-t-4 border-pink-400 rounded-xl shadow hover:shadow-lg transition duration-300 h-40">
+                       class="flex flex-col items-center justify-center p-6 bg-white rounded shadow hover:bg-gray-50 h-40">
                         <div class="text-pink-500 text-4xl mb-2">💰</div>
-                        <h2 class="font-bold text-lg text-gray-800">Payments</h2>
-                        <p class="text-sm text-gray-600 text-center">View and manage your boarding house bills.</p>
+                        <h2 class="font-bold">Payments</h2>
+                        <p class="text-sm text-gray-600">View and manage your boarding house bills.</p>
                     </a>
                 </div>
             @endif
