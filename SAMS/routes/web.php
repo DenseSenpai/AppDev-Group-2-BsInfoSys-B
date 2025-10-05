@@ -46,12 +46,18 @@ Route::middleware('auth')->group(function () {
     Route::post('/rooms/{room}/assign', [RoomController::class, 'assignBoarder'])->name('rooms.assignBoarder');
 
     // Admin-only routes (use class reference)
-    Route::middleware([AdminMiddleware::class])->group(function () {
-        Route::get('accounts/create', [AccountController::class, 'create'])->name('accounts.create');
-        Route::post('accounts', [AccountController::class, 'store'])->name('accounts.store');
-        Route::get('accounts/{user}/edit', [AccountController::class, 'edit'])->name('accounts.edit');
-        Route::put('accounts/{user}', [AccountController::class, 'update'])->name('accounts.update');
-    });
+    // ✅ Admin-only routes
+Route::middleware(['auth', AdminMiddleware::class])->group(function () {
+    Route::get('accounts/create', [AccountController::class, 'create'])->name('accounts.create');
+    Route::post('accounts', [AccountController::class, 'store'])->name('accounts.store');
+});
+
+// ✅ Allow both Admin and User (controller checks who can access)
+Route::middleware('auth')->group(function () {
+    Route::get('accounts/{user}/edit', [AccountController::class, 'edit'])->name('accounts.edit');
+    Route::put('accounts/{user}', [AccountController::class, 'update'])->name('accounts.update');
+});
+
 
     // Boarder assignment management
     Route::post('/rooms/{room}/unassign/{boarder}', [RoomController::class, 'unassignBoarder'])
