@@ -7,7 +7,7 @@
         <div class="absolute inset-0 bg-white/70 backdrop-blur-sm"></div>
 
         <div class="relative z-10 container mx-auto p-6">
-
+    <div class="container mx-auto p-6">
             {{-- ✅ Welcome Message --}}
             @auth
                 <div class="flex items-center justify-center mb-10">
