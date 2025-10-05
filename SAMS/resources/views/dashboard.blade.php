@@ -1,4 +1,5 @@
 <x-app-layout>
+    <div class="min-h-screen w-full overflow-x-hidden">
     {{-- 🌇 Background Image --}}
     <div class="relative min-h-screen bg-cover bg-center bg-no-repeat"
          style="background-image: url('https://plus.unsplash.com/premium_photo-1668800128586-381f0ac153fa?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0');">
