@@ -1,4 +1,14 @@
 <x-app-layout>
+     <div class="min-h-screen w-full overflow-x-hidden">
+    {{-- 🌇 Background Image --}}
+    <div class="relative min-h-screen bg-cover bg-center bg-no-repeat"
+         style="background-image: url('https://plus.unsplash.com/premium_photo-1668800128586-381f0ac153fa?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0');">
+
+        {{-- 🩶 White Overlay --}}
+        <div class="absolute inset-0 bg-white/70 backdrop-blur-sm"></div>
+
+        {{-- 🧱 Main Content --}}
+        <div class="relative z-10 container mx-auto p-6">
     <div class="max-w-3xl mx-auto mt-10 bg-white shadow-md rounded-lg p-6">
         <h2 class="text-2xl font-bold mb-6 text-gray-800">Edit Account</h2>
 
