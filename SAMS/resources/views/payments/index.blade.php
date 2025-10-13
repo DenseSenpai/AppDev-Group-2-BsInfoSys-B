@@ -36,7 +36,14 @@
                 </div>
 
                 {{-- 🔹 Bills Table --}}
-                <h3 class="text-2xl font-semibold mb-4 text-white text-center">🏠 Boarders & Payments</h3>
+                <div class="flex justify-between items-center mb-4">
+                    <h3 class="text-2xl font-semibold text-white">🏠 Boarders & Payments</h3>
+
+                    <a href="{{ route('payments.create') }}"
+                       class="bg-green-500 hover:bg-green-600 text-white font-medium px-4 py-2 rounded-lg shadow transition">
+                        ➕ Create Bill
+                    </a>
+                </div>
 
                 <div class="overflow-x-auto bg-white bg-opacity-90 rounded-2xl shadow-lg p-4">
                     <table class="w-full border-collapse text-gray-800">
@@ -55,26 +62,47 @@
                                     <td class="border p-3">{{ $boarder->room->room_number ?? 'Not Assigned' }}</td>
                                     <td class="border p-3">₱{{ number_format($boarder->room->monthly_rent ?? 0, 2) }}</td>
                                     <td class="border p-3">
+                                        {{-- ✅ Fixed bill loop --}}
                                         @forelse($boarder->bills as $bill)
                                             <div class="mb-3 p-3 bg-gray-50 rounded shadow-sm">
-                                                <strong>{{ ucfirst($bill->type) }}</strong> - ₱{{ number_format($bill->amount, 2) }} <br>
-                                                <span class="text-sm text-gray-600">Period:</span> 
-                                                {{ $bill->period_start->format('M d, Y') }} - {{ $bill->period_end->format('M d, Y') }} <br>
-                                                <span class="text-sm text-gray-600">Status:</span>
-                                                @if($bill->is_paid)
-                                                    <span class="text-green-600 font-bold">Paid</span>
-                                                @else
-                                                    <span class="text-red-600 font-bold">Unpaid</span>
-                                                @endif
-
-                                                {{-- Payment details --}}
-                                                @foreach($bill->payments as $payment)
-                                                    <div class="mt-1 text-sm text-gray-600">
-                                                        Method: {{ ucfirst($payment->method) }},
-                                                        Status: {{ ucfirst($payment->status) }},
-                                                        Paid At: {{ $payment->paid_at ? $payment->paid_at->format('M d, Y') : '-' }}
+                                                <div class="flex justify-between items-start">
+                                                    <div>
+                                                        <strong>{{ ucfirst($bill->type) }}</strong> - ₱{{ number_format($bill->amount, 2) }} <br>
+                                                        <span class="text-sm text-gray-600">Period:</span> 
+                                                        {{ \Carbon\Carbon::parse($bill->period_start)->format('M d, Y') }} - 
+                                                        {{ \Carbon\Carbon::parse($bill->period_end)->format('M d, Y') }} <br>
+                                                        <span class="text-sm text-gray-600">Status:</span>
+                                                        @if($bill->is_paid)
+                                                            <span class="text-green-600 font-bold">Paid</span>
+                                                        @else
+                                                            <span class="text-red-600 font-bold">Unpaid</span>
+                                                        @endif
                                                     </div>
-                                                @endforeach
+
+                                                    {{-- 🗑️ Delete Button --}}
+                                                    <form action="{{ route('payments.destroyBill', $bill->id) }}" 
+                                                          method="POST" 
+                                                          onsubmit="return confirm('Are you sure you want to delete this bill?');">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        <button type="submit" 
+                                                                class="bg-red-600 hover:bg-red-700 text-white text-sm px-3 py-1 rounded shadow">
+                                                            Delete
+                                                        </button>
+                                                    </form>
+                                                </div>
+
+                                                {{-- 💳 Payment details --}}
+                                                @if($bill->payments && $bill->payments->count() > 0)
+                                                    @foreach($bill->payments as $payment)
+                                                        <div class="mt-2 text-sm text-gray-600 border-t pt-1">
+                                                            Method: {{ ucfirst($payment->method) }},
+                                                            Status: {{ ucfirst($payment->status) }},
+                                                            Paid At: 
+                                                            {{ $payment->paid_at ? \Carbon\Carbon::parse($payment->paid_at)->format('M d, Y') : '-' }}
+                                                        </div>
+                                                    @endforeach
+                                                @endif
                                             </div>
                                         @empty
                                             <span class="text-gray-500">No bills yet</span>
@@ -83,7 +111,7 @@
                                 </tr>
                             @empty
                                 <tr>
-                                    <td colspan="4" class="p-4 text-center text-gray-500">No boarders yet.</td>
+                                    <td colspan="4" class="text-center text-gray-600 p-4">No boarders found.</td>
                                 </tr>
                             @endforelse
                         </tbody>
