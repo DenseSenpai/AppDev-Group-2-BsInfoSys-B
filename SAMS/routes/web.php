@@ -8,6 +8,8 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\AccountController;
 use App\Http\Middleware\AdminMiddleware;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\BillController;
+
 
 // Load auth routes from Breeze
 require __DIR__.'/auth.php';
@@ -73,4 +75,16 @@ Route::middleware('auth')->group(function () {
     Route::post('/payments/update-gcash', [PaymentController::class, 'updateGcash'])
     ->name('payments.updateGcash')
     ->middleware('auth');
+
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('/payments/index', [BillController::class, 'index'])->name('payments.index');
+    Route::get('/payments/create', [BillController::class, 'create'])->name('payments.create');
+    Route::post('/payments/index', [BillController::class, 'store'])->name('payments.store');
+    Route::delete('/payments/{id}/delete', [BillController::class, 'destroyBill'])->name('payments.destroyBill');
+
+
 });
+
+});
+
