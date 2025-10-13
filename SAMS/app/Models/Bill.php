@@ -19,6 +19,15 @@ class Bill extends Model
         'is_paid',
     ];
 
+    // 🟩 Add this
+    protected $casts = [
+        'period_start' => 'date',
+        'period_end' => 'date',
+        'is_auto_generated' => 'boolean',
+        'is_paid' => 'boolean',
+    ];
+
+    // Relationships
     public function boarder()
     {
         return $this->belongsTo(Boarder::class);
